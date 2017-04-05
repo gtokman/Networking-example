@@ -13,12 +13,13 @@ NS_ASSUME_NONNULL_BEGIN
 @interface Person : NSObject
 
 @property NSString *name;
+@property NSString *imageDownloadUrl;
 @property (nullable) NSString *company;
 @property (nullable) NSString *blog;
 @property (nullable) NSString *bio;
 @property (nullable) NSString *email;
 
-- (instancetype)initWithObject:(id)object;
+- (nullable instancetype)initWithObject:(id)object;
 - (NSString*)personDescription;
 @end
 

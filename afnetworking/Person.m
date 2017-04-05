@@ -12,12 +12,16 @@
 - (instancetype)initWithObject:(id)object {
     if (self == [super init]) {
         NSDictionary *jsonDictionary = (NSDictionary*)object;
-        
-        self.name = [jsonDictionary objectForKey:@"name"];
-        self.company = [jsonDictionary objectForKey:@"company"];
-        self.bio = [jsonDictionary objectForKey:@"bio"];
-        self.blog = [jsonDictionary objectForKey:@"blog"];
-        self.email = [jsonDictionary objectForKey:@"email"];
+        if (jsonDictionary) {
+            self.name = [jsonDictionary objectForKey:@"name"];
+            self.imageDownloadUrl = [jsonDictionary objectForKey:@"avatar_url"];
+            self.company = [jsonDictionary objectForKey:@"company"];
+            self.bio = [jsonDictionary objectForKey:@"bio"];
+            self.blog = [jsonDictionary objectForKey:@"blog"];
+            self.email = [jsonDictionary objectForKey:@"email"];
+        } else {
+            return nil;
+        }
     }
     
     return self;
@@ -25,7 +29,7 @@
 
 - (NSString*)personDescription {
     return [NSString
-            stringWithFormat:@"Name: %@, Email: %@, Company: %@, Bio: %@, Blog: %@",
-            self.name, self.email, self.company, self.bio, self.blog];
+            stringWithFormat:@"Name: %@, Email: %@, Company: %@, Bio: %@, Blog: %@, ImageUrl: %@",
+            self.name, self.email, self.company, self.bio, self.blog, self.imageDownloadUrl];
 }
 @end
